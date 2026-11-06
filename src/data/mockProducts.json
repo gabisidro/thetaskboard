@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "name": "Sari-Sari Store Rice Sack (5kg)",
+    "price": 285,
+    "rating": 4.6,
+    "image": "https://placehold.co/300x300/f97316/ffffff?text=Rice+5kg"
+  },
+  {
+    "id": 2,
+    "name": "GCash-Ready Load Card (P100)",
+    "price": 100,
+    "rating": 4.9,
+    "image": "https://placehold.co/300x300/2563eb/ffffff?text=Load+P100"
+  },
+  {
+    "id": 3,
+    "name": "Carinderia Pack Lunch Special",
+    "price": 75,
+    "rating": 4.7,
+    "image": "https://placehold.co/300x300/16a34a/ffffff?text=Pack+Lunch"
+  },
+  {
+    "id": 4,
+    "name": "Sampaguita Laundry Detergent (1kg)",
+    "price": 120,
+    "rating": 4.4,
+    "image": "https://placehold.co/300x300/9333ea/ffffff?text=Detergent"
+  },
+  {
+    "id": 5,
+    "name": "Tutoring Session Voucher (1hr)",
+    "price": 350,
+    "rating": 4.8,
+    "image": "https://placehold.co/300x300/dc2626/ffffff?text=Tutoring"
+  },
+  {
+    "id": 6,
+    "name": "Salon Blowout + Trim Package",
+    "price": 450,
+    "rating": 4.5,
+    "image": "https://placehold.co/300x300/0891b2/ffffff?text=Salon"
+  }
+]
