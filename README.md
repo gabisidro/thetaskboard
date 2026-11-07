@@ -1,74 +1,75 @@
-# Week 4 Reference App — Sari-Sari Dashboard
+# # TheTaskBoard
 
-**This is a completed reference build, not a starter/pre-lab scaffold.**
-It exists so Week 5 (M4B) can begin from a real, working, cumulative
-codebase — the same way the bootcamp's own students would carry their
-Week 4 work forward — rather than from a description of what Week 4
-should have produced.
+A minimalist task manager that loads tasks from a public API. You can search
 
-## Why this app looks the way it does
+and filter tasks, open any task to see who it's assigned to, and check overall
 
-It's scoped tightly to **Week 4's own Lesson Plan outcomes** (M4A) —
-nothing from Week 5 (routing, TanStack Query, global state) has been
-pulled forward early:
+progress on the Overview page.
 
-- (a) **Components, Props & JSX** — `ProductCard` is a pure, stateless,
-  props-driven component. `Dashboard` is pure composition.
-- (b) **useState & handling user interaction** — the favourite-toggle
-  button is wired through `onClick` → `onToggleFavourite(id)` → parent
-  state update.
-- (c) **useEffect + async/await for external data** — `ProductList`
-  fetches from a public API (`fakestoreapi.com`) inside `useEffect`, with
-  a local mock-JSON fallback if the network call fails (per the LP's own
-  guidance on live-session API/internet flakiness).
-- (d) **Component lifecycle & data flow** — data flows down via props
-  (`{...product}`), events flow up via callbacks (`onToggleFavourite`).
-- (e) **Scaffolding a React project with Vite** — the project uses Vite's
-  React template.
+## Features
 
-### Correct state ownership (deliberately explicit)
+### Routes
 
-`products`, `favourites`, and `status` all live in `ProductList`, **not**
-in `ProductCard`. This isn't incidental — it's the concrete, gradeable
-answer to the "where should this state live?" question the Thinking-in-
-React lab asks learners to reason through:
+- `/` Tasks: all 200 tasks with search, status and user filters
 
-- `products` is used by every card, so it must live above all of them.
-- The live favourite **count** aggregates every card's toggle state — no
-  single card can own that number; only a shared ancestor can.
+- `/tasks/:id` Task detail: one task, its status and its assignee
 
-See the comments at the top of `ProductList.jsx` and `ProductCard.jsx`
-for the reasoning spelled out in place.
+- `/stats` Overview: total, done and open counts, plus completion percentage
 
-### What's deliberately *not* here
+- `/about` About the app
 
-Per Week 4's own Instructor Notes ("prop drilling and global state are
-Week 5's problem, not this week's — don't pre-empt them"), this app has:
-- No routing (no dynamic `:id` product-detail view).
-- No global/server state library (no Context, no TanStack Query).
+- Any other URL shows a Not found page
 
-Those are exactly the gaps Week 5 (M4B) builds on top of this app to
-close.
+### Public API
 
-## Tooling
+JSONPlaceholder: `/todos`, `/todos/:id` and `/users/:id`
 
-- Vite 8 + React 19.
-- **ESLint** (flat config, `eslint.config.js`) — swapped in for Vite's
-  newer default `oxlint`, because Week 4's LP names ESLint explicitly as
-  the module's tool, and Week 5's rubric now grades code quality against
-  it.
+### TanStack Query and UI states
 
-## Verified
+- `useQuery` with the keys `['todos']`, `['todo', id]` and `['user', userId]`
+
+- Tasks and Overview share `['todos']`, so the second page loads from the cache
+
+| State   | How to see it                                   |
+
+|---------|-------------------------------------------------|
+
+| Loading | DevTools, Network, Slow 4G, then refresh         |
+
+| Empty   | Search "zzzz" on the Tasks page                  |
+
+| Error   | Visit /tasks/9999                                |
+
+## Screenshots
+
+![Tasks](screenshots/tasks.png)
+
+![Task detail](screenshots/detail.png)
+
+![Overview](screenshots/stats.png)
+
+![Empty state](screenshots/empty.png)
+
+![Error state](screenshots/task-not-found.png)
+
+## Setup
 
 ```
-npm install     # clean install, 0 vulnerabilities
-npx eslint .    # 0 errors, 0 warnings
-npx vite build  # builds cleanly to dist/
-```
 
-## Running it
+git clone <your-repo-url>
 
-```
+cd thetaskboard
+
 npm install
+
 npm run dev
+
 ```
+
+## Tech stack
+
+React, React Router, TanStack Query, Tailwind CSS, Vite.
+
+## Live demo (stretch)
+
+(Optional Vercel URL)
