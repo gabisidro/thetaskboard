@@ -54,8 +54,3 @@ function FilterBar({ search, onSearchChange, status, onStatusChange, user, onUse
 }
 
 export default FilterBar
-
-// In TasksPage:
-// <FilterBar search={search} onSearchChange={setSearch}
-//            status={status} onStatusChange={setStatus}
-//            user={user} onUserChange={setUser} />
